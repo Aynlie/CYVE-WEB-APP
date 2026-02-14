@@ -141,6 +141,7 @@ function LoggedOutHome() {
                 <div className={styles.heroMainTitle}>CYVE</div>
                 <div className={`${styles.searchContainer} search-container`}>
                     <div className={styles.searchBar}>
+                        <img src="/design-specs/images/52_40.png" alt="Search" className={styles.searchIcon} />
                         <input 
                             type="text" 
                             className={styles.searchInput} 
@@ -252,9 +253,10 @@ function LoggedOutHome() {
                 {/* Red Team */}
                 <div className={styles.teamCard}>
                     <Link href="/league/red-team" className={styles.teamLink}>
+                        <div className={styles.teamBg} style={{ backgroundImage: "url('/design-specs/images/62_6.png')" }}></div>
                         <div className={styles.teamContent}>
                             <div className={styles.teamFocalWrapper}>
-                                <span className={styles.teamFocalImg}>Red Team</span>
+                                <img src="/design-specs/images/62_7.png" alt="Red Team" className={styles.teamFocalImg} />
                             </div>
                             <div className={styles.teamLabels}>
                                 <span className={styles.teamLabelLeft}>Red Team</span>
@@ -267,9 +269,10 @@ function LoggedOutHome() {
                 {/* Blue Team */}
                 <div className={styles.teamCard}>
                     <Link href="/league/blue-team" className={styles.teamLink}>
+                        <div className={styles.teamBg} style={{ backgroundImage: "url('/design-specs/images/62_6.png')" }}></div>
                         <div className={styles.teamContent}>
                             <div className={styles.teamFocalWrapper}>
-                                <span className={styles.teamFocalImg}>Blue Team</span>
+                                <img src="/design-specs/images/blue_team.png" alt="Blue Team" className={styles.teamFocalImg} />
                             </div>
                             <div className={styles.teamLabels}>
                                 <span className={styles.teamLabelLeft}>Blue Team</span>
@@ -282,9 +285,10 @@ function LoggedOutHome() {
                 {/* Purple Team */}
                 <div className={styles.teamCard}>
                     <Link href="/league/purple-team" className={styles.teamLink}>
+                        <div className={styles.teamBg} style={{ backgroundImage: "url('/design-specs/images/62_6.png')" }}></div>
                         <div className={styles.teamContent}>
                             <div className={styles.teamFocalWrapper}>
-                                <span className={styles.teamFocalImg}>Purple Team</span>
+                                <img src="/design-specs/images/purple_team.png" alt="Purple Team" className={styles.teamFocalImg} />
                             </div>
                             <div className={styles.teamLabels}>
                                 <span className={styles.teamLabelLeft}>Purple Team</span>
