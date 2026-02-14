@@ -1,11 +1,11 @@
 'use client';
 
 import { useEffect, useState } from 'react';
-import ProtectedRoute from '@/components/ProtectedRoute';
+import ProtectedRoute from '@/app/Homepage/components/ProtectedRoute';
 import { useProfile, type PreferredRole } from '@/context/ProfileContext';
 import { useRoadmap, type RoadmapStep } from '@/context/RoadmapContext';
 import { ROLE_TIMELINES, ROLE_COMPANIES, ROLE_TITLES, ROLE_OVERVIEW, ROLE_SKILLS, ROLE_CERTIFICATIONS, STEP_EXTRA, type RoleKey } from './roadmapData';
-import RoadmapMap from '@/components/RoadmapMap';
+import RoadmapMap from '@/app/Homepage/components/RoadmapMap';
 import styles from './roadmap.module.css';
 
 import {
@@ -13,7 +13,7 @@ import {
   GraduationIcon,
   SecurityIcon,
   SkullIcon
-} from '@/components/Icons';
+} from '@/app/Homepage/components/Icons';
 
 function StepIcon({ type }: { type: string }) {
   const size = 32;

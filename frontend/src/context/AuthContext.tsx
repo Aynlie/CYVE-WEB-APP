@@ -130,8 +130,8 @@ export function AuthProvider({ children }: { children: ReactNode }) {
     const logout = async () => {
         setUser(null);
         localStorage.removeItem(CURRENT_USER_KEY);
-        // Redirect to static landing page
-        window.location.href = 'file:///C:/Users/Jaynielilie/Documents/Projects/CYVE/index.html';
+        // Redirect to Next.js homepage (which will show landing page for non-authenticated users)
+        window.location.href = '/';
     };
 
     return (

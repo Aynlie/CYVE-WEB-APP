@@ -4,167 +4,192 @@
 
 /* Logged Out Home - Hero Section */
 .hero {
-    padding: 3rem 4rem 4rem;
-    background-color: #000000;
+    padding: 4rem 2rem;
     text-align: center;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 2rem;
 }
 
 .heroMainTitle {
+    font-size: 8rem;
+    font-weight: 700;
+    color: var(--color-primary);
+    letter-spacing: 0.2em;
+    margin-bottom: 1rem;
     font-family: 'Montserrat', sans-serif;
-    font-size: 128px;
-    font-weight: 900;
-    color: #ffffff;
-    margin: 2rem 0;
-    text-align: center;
 }
 
 .searchContainer {
-    max-width: 900px;
-    margin: 0 auto 3rem;
+    width: 100%;
+    max-width: 800px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 1.5rem;
     position: relative;
 }
 
 .searchBar {
     width: 100%;
-    max-width: 899px;
-    height: 107px;
+    height: 60px;
     background-color: #ffffff;
-    border: 1px solid #d9d9d9;
-    border-radius: 8px;
+    border-radius: 30px;
     display: flex;
     align-items: center;
-    padding: 0 2rem;
-    margin: 0 auto 1rem;
+    padding: 0 1.5rem;
+    gap: 1rem;
 }
 
 .searchInput {
-    width: 100%;
+    flex: 1;
     border: none;
     outline: none;
     font-size: 1rem;
+    font-family: 'Montserrat', sans-serif;
+    background: transparent;
+    color: #333;
+}
+
+.searchInput::placeholder {
+    color: #8d8d8d;
+    font-weight: 500;
 }
 
 .searchSuggestions {
     position: absolute;
-    top: 100%;
-    left: 0;
-    right: 0;
+    top: 70px;
+    width: 100%;
     background: white;
-    border: 1px solid #d9d9d9;
-    border-top: none;
-    border-radius: 0 0 8px 8px;
+    border-radius: 15px;
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
+    z-index: 100;
     max-height: 300px;
     overflow-y: auto;
-    z-index: 1000;
+    text-align: left;
 }
 
 .tagline {
+    font-size: 1.5rem;
+    letter-spacing: 0.1em;
+    color: var(--color-text);
+    margin: 0;
     font-family: 'Montserrat', sans-serif;
-    font-size: 32px;
-    font-weight: 400;
-    line-height: 38.73px;
-    color: #ffffff;
-    margin: 1rem 0 0;
-    text-align: center;
 }
 
 /* Sub-Hero Section */
 .subHero {
-    background-color: #000000;
-    padding: 4rem;
-    display: flex;
-    align-items: center;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    padding: 6rem 4rem;
     gap: 4rem;
-    max-width: 1400px;
-    margin: 0 auto;
+    align-items: center;
 }
 
 .subHeroLeft {
-    flex: 1;
     display: flex;
-    flex-direction: column;
     align-items: center;
+    gap: 2rem;
 }
 
 .triangleGraphic {
     width: 0;
     height: 0;
-    border-left: 50px solid transparent;
-    border-right: 50px solid transparent;
-    border-bottom: 87px solid #f5be1e;
-    margin-bottom: 2rem;
+    border-left: 20px solid transparent;
+    border-right: 20px solid transparent;
+    border-bottom: 80px solid var(--color-primary);
+    transform: rotate(-5deg);
+    flex-shrink: 0;
 }
 
 .buildText {
     display: flex;
     flex-direction: column;
-    align-items: center;
-    gap: 0.5rem;
-}
-
-.buildText span {
+    font-size: 3.5rem;
+    font-weight: 700;
+    line-height: 1;
+    text-transform: lowercase;
+    letter-spacing: -0.05em;
     font-family: 'Montserrat', sans-serif;
-    font-size: 48px;
-    font-weight: 400;
-    color: #ffffff;
 }
 
 .subHeroRight {
-    flex: 1;
+    max-width: 600px;
 }
 
 .subHeroTitle {
-    font-family: 'Montserrat', sans-serif;
-    font-size: 32px;
+    font-size: 1.5rem;
     font-weight: 700;
-    color: #ffffff;
-    margin: 0 0 1.5rem;
+    margin-bottom: 1rem;
+    font-family: 'Montserrat', sans-serif;
 }
 
 .subHeroDescription {
-    font-family: 'Montserrat', sans-serif;
-    font-size: 1rem;
-    font-weight: 400;
-    color: #ffffff;
+    font-size: 1.1rem;
+    color: var(--color-text-dim);
     line-height: 1.6;
-    margin: 0;
+    font-family: 'Montserrat', sans-serif;
 }
 
 /* Team Sections */
 .teamSections {
-    background-color: #000000;
-    padding: 4rem 2rem;
     display: flex;
     flex-direction: column;
-    gap: 3rem;
+    gap: 6rem;
+    padding: 4rem 0;
 }
 
 .teamCard {
-    max-width: 1200px;
-    margin: 0 auto;
-    width: 100%;
+    min-height: 80vh;
+    position: relative;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    overflow: hidden;
+    padding: 8rem 0;
+    border-radius: 60px;
+    margin: 0 4rem;
+    box-shadow: 0 20px 80px rgba(0, 0, 0, 0.5);
 }
 
 .teamLink {
     text-decoration: none;
     color: inherit;
     display: block;
+    width: 100%;
+    height: 100%;
 }
 
 .teamContent {
     position: relative;
+    z-index: 2;
+    width: 100%;
+    max-width: 1200px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
     background: linear-gradient(135deg, rgba(245, 190, 30, 0.15), rgba(0, 0, 0, 0.9));
     min-height: 300px;
     border-radius: 12px;
-    display: flex;
-    flex-direction: column;
     justify-content: center;
-    align-items: center;
     padding: 2rem;
 }
 
 .teamFocalWrapper {
+    width: 60%;
+    max-width: 800px;
+    height: 450px;
+    border: 2px solid var(--color-primary);
+    border-radius: 40px 40px 0 0;
+    padding: 0;
+    overflow: hidden;
+    background-color: rgba(0, 0, 0, 0.5);
+    box-shadow: 0 20px 50px rgba(0, 0, 0, 0.8), 0 0 20px rgba(245, 190, 30, 0.2);
     margin-bottom: 2rem;
+    display: flex;
+    align-items: center;
+    justify-content: center;
 }
 
 .teamFocalImg {
@@ -175,14 +200,22 @@
 }
 
 .teamLabels {
+    width: 100%;
+    max-width: 800px;
     display: flex;
     justify-content: space-between;
-    width: 100%;
-    margin-top: auto;
+    margin-top: 2rem;
+    font-size: 1.5rem;
+    font-weight: 700;
+    color: var(--color-primary);
+    text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.8);
 }
 
 .teamLabelLeft,
 .teamLabelRight {
+    padding: 0.5rem 1rem;
+    background-color: rgba(0, 0, 0, 0.6);
+    border-radius: 8px;
     font-family: 'Montserrat', sans-serif;
     font-size: 24px;
     font-weight: 400;
@@ -372,6 +405,21 @@
 
 /* Responsive */
 @media (max-width: 1200px) {
+    .subHero {
+        grid-template-columns: 1fr;
+        text-align: center;
+        padding: 4rem 2rem;
+        gap: 3rem;
+    }
+
+    .subHeroLeft {
+        justify-content: center;
+    }
+
+    .heroMainTitle {
+        font-size: 6rem;
+    }
+
     .statsGrid {
         grid-template-columns: 1fr;
     }
@@ -385,16 +433,11 @@
     }
 
     .hero {
-        padding: 2rem;
-    }
-
-    .heroMainTitle {
-        font-size: 5rem;
-    }
-
-    .subHero {
         padding: 3rem 2rem;
-        gap: 3rem;
+    }
+
+    .teamCard {
+        margin: 0 2rem;
     }
 }
 
@@ -406,29 +449,35 @@
     }
 
     .heroMainTitle {
-        font-size: 4rem;
+        font-size: 5rem;
+    }
+
+    .tagline {
+        font-size: 1.25rem;
+    }
+
+    .subHero {
+        padding: 3rem 2rem;
+        gap: 2rem;
+    }
+
+    .buildText {
+        font-size: 3rem;
+    }
+
+    .teamCard {
+        min-height: 60vh;
+        padding: 4rem 0;
+        margin: 0 1rem;
+    }
+
+    .teamFocalWrapper {
+        width: 70%;
+        height: 350px;
     }
 
     .welcomeTitle {
         font-size: 2rem;
-    }
-
-    .subHero {
-        flex-direction: column;
-        padding: 2rem;
-        gap: 2rem;
-    }
-
-    .buildText span {
-        font-size: 36px;
-    }
-
-    .subHeroTitle {
-        font-size: 28px;
-    }
-
-    .teamSections {
-        padding: 3rem 1rem;
     }
 
     .teamFocalImg {
@@ -449,16 +498,67 @@
     }
 
     .heroMainTitle {
-        font-size: 3rem;
-    }
-
-    .tagline {
-        font-size: 1.25rem;
+        font-size: 3.5rem;
+        margin-bottom: 1.5rem;
     }
 
     .searchBar {
-        height: 80px;
-        padding: 0 1.5rem;
+        height: 50px;
+        padding: 0 1rem;
+    }
+
+    .searchInput {
+        font-size: 0.9rem;
+    }
+
+    .tagline {
+        font-size: 1rem;
+    }
+
+    .subHero {
+        padding: 2rem 1rem;
+        gap: 1.5rem;
+    }
+
+    .triangleGraphic {
+        border-left: 15px solid transparent;
+        border-right: 15px solid transparent;
+        border-bottom: 60px solid var(--color-primary);
+    }
+
+    .buildText {
+        font-size: 2.5rem;
+    }
+
+    .subHeroTitle {
+        font-size: 1.25rem;
+    }
+
+    .subHeroDescription {
+        font-size: 1rem;
+    }
+
+    .teamSections {
+        padding: 2rem 1rem;
+        gap: 2rem;
+    }
+
+    .teamCard {
+        min-height: 50vh;
+        padding: 2rem 0;
+        margin: 0;
+        border-radius: 30px;
+    }
+
+    .teamFocalWrapper {
+        width: 90%;
+        height: 250px;
+        border-radius: 20px 20px 0 0;
+    }
+
+    .teamLabels {
+        font-size: 1.25rem;
+        margin-top: 1rem;
     }
 
     .actionGrid {
@@ -488,27 +588,6 @@
         gap: 1rem;
     }
 
-    .subHero {
-        padding: 1.5rem 1rem;
-    }
-
-    .buildText span {
-        font-size: 28px;
-    }
-
-    .subHeroTitle {
-        font-size: 24px;
-    }
-
-    .subHeroDescription {
-        font-size: 0.9rem;
-    }
-
-    .teamSections {
-        padding: 2rem 1rem;
-        gap: 2rem;
-    }
-
     .teamContent {
         min-height: 250px;
         padding: 1.5rem;
@@ -529,13 +608,19 @@
         font-size: 2.5rem;
     }
 
-    .tagline {
-        font-size: 1rem;
+    .buildText {
+        font-size: 2rem;
     }
 
-    .searchBar {
-        height: 60px;
-        padding: 0 1rem;
+    .teamFocalWrapper {
+        height: 200px;
+    }
+
+    .teamLabels {
+        font-size: 1rem;
+        flex-direction: column;
+        gap: 0.5rem;
+        text-align: center;
     }
 
     .welcomeTitle {
@@ -548,14 +633,6 @@
 
     .statValue {
         font-size: 1.5rem;
-    }
-
-    .buildText span {
-        font-size: 24px;
-    }
-
-    .subHeroTitle {
-        font-size: 20px;
     }
 
     .teamContent {

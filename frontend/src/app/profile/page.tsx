@@ -1,6 +1,6 @@
 'use client';
 
-import ProtectedRoute from '@/components/ProtectedRoute';
+import ProtectedRoute from '@/app/Homepage/components/ProtectedRoute';
 import { useAuth } from '@/context/AuthContext';
 import { useProfile, type PreferredRole } from '@/context/ProfileContext';
 import { useRoadmap } from '@/context/RoadmapContext';

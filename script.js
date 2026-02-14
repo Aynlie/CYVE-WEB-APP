@@ -60,6 +60,36 @@ const careerDatabase = [
     }
 ];
 
+// Mobile menu toggle functionality
+function initializeMobileMenu() {
+    const mobileMenuToggle = document.getElementById('mobileMenuToggle');
+    const navLinks = document.getElementById('navLinks');
+
+    if (mobileMenuToggle && navLinks) {
+        mobileMenuToggle.addEventListener('click', function() {
+            this.classList.toggle('active');
+            navLinks.classList.toggle('mobile-open');
+        });
+
+        // Close mobile menu when clicking on a link
+        const navLinkItems = navLinks.querySelectorAll('a');
+        navLinkItems.forEach(link => {
+            link.addEventListener('click', () => {
+                mobileMenuToggle.classList.remove('active');
+                navLinks.classList.remove('mobile-open');
+            });
+        });
+
+        // Close mobile menu when clicking outside
+        document.addEventListener('click', (e) => {
+            if (!mobileMenuToggle.contains(e.target) && !navLinks.contains(e.target)) {
+                mobileMenuToggle.classList.remove('active');
+                navLinks.classList.remove('mobile-open');
+            }
+        });
+    }
+}
+
 // Check if user is logged in
 function checkAuthStatus() {
     const isLoggedIn = localStorage.getItem('userLoggedIn') === 'true';
@@ -162,6 +192,7 @@ function scrollToTeam(teamClass) {
 document.addEventListener('DOMContentLoaded', function () {
     checkAuthStatus();
     initializeSearch();
+    initializeMobileMenu();
 });
 
 // For testing purposes

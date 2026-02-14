@@ -22,21 +22,24 @@
         <span class="logo-text"></span>
       </a>
     </div>
-    <ul class="nav-links">
+    <button class="mobile-menu-toggle" id="mobileMenuToggle">
+      <span></span>
+      <span></span>
+      <span></span>
+    </button>
+    <ul class="nav-links" id="navLinks">
       <li><a href="#home" class="active">Home</a></li>
-      <li><a href="http://localhost:3001/roadmap">Roadmap</a></li>
-      <li><a href="http://localhost:3001/calendar">Calendar</a></li>
-      <li><a href="http://localhost:3001/league">League</a></li>
-      <li><a href="http://localhost:3001/contact">About</a></li>
+      <li><a href="http://localhost:3000/league">League</a></li>
+      <li><a href="http://localhost:3000/contact">About</a></li>
     </ul>
     <div class="nav-right">
       <!-- Show these buttons when user is NOT logged in -->
       <div class="auth-buttons" id="authButtons">
-        <a href="http://localhost:3001/login" class="btn-login">Log In</a>
-        <a href="http://localhost:3001/signup" class="btn-signup">Sign Up</a>
+        <a href="http://localhost:3000/login" class="btn-login">Log In</a>
+        <a href="http://localhost:3000/signup" class="btn-signup">Sign Up</a>
       </div>
       <!-- Show profile icon when user IS logged in (hidden by default) -->
-      <a href="http://localhost:3001/profile" class="profile-link" id="profileLink" style="display: none;">
+      <a href="http://localhost:3000/profile" class="profile-link" id="profileLink" style="display: none;">
         <img src="design-specs/images/77_107.png" alt="Profile" class="profile-icon">
       </a>
     </div>

@@ -1,6 +1,6 @@
 'use client';
 
-import ProtectedRoute from '@/components/ProtectedRoute';
+import ProtectedRoute from '@/app/Homepage/components/ProtectedRoute';
 import { useCalendar } from '@/context/CalendarContext';
 import { useState } from 'react';
 import styles from './calendar.module.css';

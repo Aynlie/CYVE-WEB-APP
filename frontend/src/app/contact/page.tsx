@@ -3,7 +3,7 @@
 import { useState } from 'react';
 import Link from 'next/link';
 import styles from './contact.module.css';
-import { ShieldIcon, TargetIcon, UserIcon, LibraryIcon } from '@/components/Icons';
+import { ShieldIcon, TargetIcon, UserIcon, LibraryIcon } from '@/app/Homepage/components/Icons';
 
 export default function ContactPage() {
     const [formData, setFormData] = useState({

@@ -1,6 +1,7 @@
 'use client';
 
 import Link from 'next/link';
+import Image from 'next/image';
 import { usePathname } from 'next/navigation';
 import { useAuth } from '@/context/AuthContext';
 import styles from './Header.module.css';
@@ -20,7 +21,13 @@ export default function Header() {
         <header className={styles.header}>
             <div className={styles.container}>
                 <Link href="/" className={styles.logo}>
-                    CYVE
+                    <Image 
+                        src="/design-specs/images/52_31.png" 
+                        alt="CYVE Logo" 
+                        width={80} 
+                        height={80}
+                        className={styles.logoImg}
+                    />
                 </Link>
 
                 <nav className={styles.nav}>
@@ -31,18 +38,23 @@ export default function Header() {
                         Home
                     </Link>
 
-                    <Link
-                        href="/roadmap"
-                        className={`${styles.navLink} ${isActive('/roadmap') ? styles.active : ''}`}
-                    >
-                        Roadmap
-                    </Link>
-                    <Link
-                        href="/calendar"
-                        className={`${styles.navLink} ${isActive('/calendar') ? styles.active : ''}`}
-                    >
-                        Calendar
-                    </Link>
+                    {isAuthenticated && (
+                        <>
+                            <Link
+                                href="/roadmap"
+                                className={`${styles.navLink} ${isActive('/roadmap') ? styles.active : ''}`}
+                            >
+                                Roadmap
+                            </Link>
+                            <Link
+                                href="/calendar"
+                                className={`${styles.navLink} ${isActive('/calendar') ? styles.active : ''}`}
+                            >
+                                Calendar
+                            </Link>
+                        </>
+                    )}
+
                     <Link
                         href="/league"
                         className={`${styles.navLink} ${isActive('/league') || pathname?.startsWith('/league/') ? styles.active : ''}`}
