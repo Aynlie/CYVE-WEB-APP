@@ -20,8 +20,8 @@ interface AuthContextType {
 
 const AuthContext = createContext<AuthContextType | undefined>(undefined);
 
-// LocalStorage-based authentication (works without XAMPP)
-const USERS_KEY = 'cyve_users';
+// API Configuration
+const API_BASE_URL = process.env.NEXT_PUBLIC_API_URL || 'http://localhost/ARZAGA/CYVE-WEB-APP-main/backend/api';
 const CURRENT_USER_KEY = 'cyve_current_user';
 
 export function AuthProvider({ children }: { children: ReactNode }) {
@@ -29,7 +29,7 @@ export function AuthProvider({ children }: { children: ReactNode }) {
     const [loading, setLoading] = useState(true);
 
     useEffect(() => {
-        // Check if user is already logged in
+        // Check if user is already logged in (persistence)
         const storedUser = localStorage.getItem(CURRENT_USER_KEY);
         if (storedUser) {
             try {
@@ -44,93 +44,71 @@ export function AuthProvider({ children }: { children: ReactNode }) {
 
     const login = async (email: string, password: string, remember: boolean = false): Promise<{ success: boolean; message: string }> => {
         try {
-            // Get all registered users from localStorage
-            const usersData = localStorage.getItem(USERS_KEY);
-            const users = usersData ? JSON.parse(usersData) : [];
+            const response = await fetch(`${API_BASE_URL}/login.php`, {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json',
+                },
+                body: JSON.stringify({ email, password }),
+            });
 
-            console.log('Stored users:', users); // Debug log
+            const data = await response.json();
 
-            // Find user by email or username
-            const foundUser = users.find((u: any) => 
-                u.email.toLowerCase() === email.toLowerCase() || 
-                u.name.toLowerCase() === email.toLowerCase()
-            );
+            if (data.success) {
+                const userObj: User = {
+                    id: data.user.id,
+                    email: data.user.email,
+                    name: data.user.name,
+                    role: data.user.role || 'user'
+                };
 
-            if (!foundUser) {
-                return { success: false, message: 'User not found. Please sign up first.' };
+                setUser(userObj);
+                localStorage.setItem(CURRENT_USER_KEY, JSON.stringify(userObj));
+                return { success: true, message: data.message || 'Login successful!' };
+            } else {
+                return { success: false, message: data.message || 'Invalid credentials.' };
             }
-
-            // Check password (in real app, this would be hashed)
-            if (foundUser.password !== password) {
-                return { success: false, message: 'Invalid password.' };
-            }
-
-            // Create user object without password
-            const userObj: User = {
-                id: foundUser.id,
-                email: foundUser.email,
-                name: foundUser.name,
-                role: foundUser.role || 'user'
-            };
-
-            setUser(userObj);
-            localStorage.setItem(CURRENT_USER_KEY, JSON.stringify(userObj));
-
-            return { success: true, message: 'Login successful!' };
         } catch (error) {
             console.error('Login error:', error);
-            return { success: false, message: 'An error occurred during login.' };
+            return { success: false, message: 'Could not connect to the authentication server. Ensure XAMPP is running.' };
         }
     };
 
     const signup = async (name: string, email: string, password: string): Promise<{ success: boolean; message: string }> => {
         try {
-            // Get existing users
-            const usersData = localStorage.getItem(USERS_KEY);
-            const users = usersData ? JSON.parse(usersData) : [];
+            const response = await fetch(`${API_BASE_URL}/signup.php`, {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json',
+                },
+                body: JSON.stringify({ name, email, password }),
+            });
 
-            // Check if email already exists
-            const existingUser = users.find((u: any) => u.email === email);
-            if (existingUser) {
-                return { success: false, message: 'Email already registered. Please login instead.' };
+            const data = await response.json();
+
+            if (data.success) {
+                // After successful signup, we can automatically log them in
+                // using the user data returned or the credentials
+                return login(email, password);
+            } else {
+                return { success: false, message: data.message || 'Registration failed.' };
             }
-
-            // Create new user
-            const newUser = {
-                id: Date.now().toString(),
-                name,
-                email,
-                password, // In real app, this should be hashed
-                role: 'user',
-                createdAt: new Date().toISOString()
-            };
-
-            // Add to users array
-            users.push(newUser);
-            localStorage.setItem(USERS_KEY, JSON.stringify(users));
-
-            // Auto-login after signup
-            const userObj: User = {
-                id: newUser.id,
-                email: newUser.email,
-                name: newUser.name,
-                role: newUser.role
-            };
-
-            setUser(userObj);
-            localStorage.setItem(CURRENT_USER_KEY, JSON.stringify(userObj));
-
-            return { success: true, message: 'Registration successful!' };
         } catch (error) {
             console.error('Signup error:', error);
-            return { success: false, message: 'An error occurred during registration.' };
+            return { success: false, message: 'Could not connect to the registration server. Ensure XAMPP is running.' };
         }
     };
 
     const logout = async () => {
+        try {
+            // Optional: call logout API to clear PHP session
+            await fetch(`${API_BASE_URL}/logout.php`);
+        } catch (e) {
+            console.warn('Logout API call failed, continuing with local cleanup');
+        }
+
         setUser(null);
         localStorage.removeItem(CURRENT_USER_KEY);
-        // Redirect to Next.js homepage (which will show landing page for non-authenticated users)
         window.location.href = '/';
     };
 
@@ -148,3 +126,4 @@ export function useAuth() {
     }
     return context;
 }
+
