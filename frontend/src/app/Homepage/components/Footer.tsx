@@ -21,14 +21,14 @@ export default function Footer() {
                 </div>
 
                 <div className={styles.linksColumn}>
-                    <h4 className={styles.linksHeading}>Roadmap</h4>
+                    <h4 className={styles.linksHeading}></h4>
                     <Link href="/roadmap">Roadmap</Link>
                     <Link href="/calendar">Calendar</Link>
                     <Link href="/roadmap">Recommendation</Link>
                 </div>
 
                 <div className={styles.linksColumn}>
-                    <h4 className={styles.linksHeading}>Contact Us</h4>
+                    <h4 className={styles.linksHeading}></h4>
                     <Link href="/contact">Contact Us</Link>
                     <h4 className={styles.linksHeading}>Follow Us</h4>
                     <p className={styles.contactInfo}>+63 000 000 0000</p>
